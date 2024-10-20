@@ -9,8 +9,7 @@
 namespace esphome {
 namespace frekvenspanel {
 
-class Panel : public PollingComponent,
-                public display::DisplayBuffer {
+class Panel : public display::DisplayBuffer {
  public:
   int p_latch;
   int p_clock;
@@ -52,6 +51,8 @@ class Panel : public PollingComponent,
 
   int get_width_internal() override;
   int get_height_internal() override;
+
+  display::DisplayType get_display_type() { return display::DisplayType::DISPLAY_TYPE_BINARY; };
 
   GPIOPin *reset_pin_;
   GPIOPin *dc_pin_;
